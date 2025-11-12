@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #F7AD19;
+  --primary-light: #b78edb;
+  --primary-dark: #7e49b6;
+  --background: #2a1a3a;
+  --text: #ffffff;
+  --text-secondary: #cccccc;
+  --overlay: rgba(26, 26, 46, 0.7);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --border-radius: 12px;
+  --error: #ff5630;
+  --warning: #ffab00;
+  --success: #36b37e;
+  --info: #4c9aff;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #1a1a1a;
+}
+
+/* Particle animation */
+@keyframes particleRise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+}
+
+.particle {
+  position: absolute;
+  bottom: 0;
+  width: 5px;
+  height: 5px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particleRise var(--duration, 3s) ease-out forwards;
+}
+
+/* Toggle Switch */
+input:checked + .slider {
+  background-color: var(--primary);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--primary);
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* Channel Sheet Animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.3s forwards;
+}
+
+.slide-down {
+  animation: slideDown 0.3s forwards;
+}
+
+/* Notification Animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 640px) {
+  .timer-time {
+    font-size: 2.5rem !important;
+  }
+
+  .control-button.primary {
+    min-width: 5rem !important;
+    padding: 0.5rem 1rem !important;
+  }
+
+  .control-button.secondary {
+    padding: 0.5rem !important;
+  }
+
+  .tasks-list {
+    max-height: 300px !important;
+  }
+
+  .lists-container {
+    max-height: 200px !important;
+  }
+
+  /* Improve touch targets for mobile */
+  .task-checkbox,
+  .edit-task-btn,
+  .list-option-btn,
+  .close-btn {
+    min-width: 24px;
+    min-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Ensure modals are scrollable on small screens */
+  .modal-content {
+    overflow-y: auto;
+  }
+
+  /* Make form inputs more touch-friendly */
+  input,
+  select,
+  textarea,
+  button {
+    font-size: 16px !important; /* Prevents iOS zoom on focus */
+  }
+}
+
+/* Ensure the YouTube player is responsive */
+#lofi-player {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Improve draggable behavior on touch devices */
+.react-draggable {
+  touch-action: none;
+}
+
+/* Ensure the draggable handle is properly styled */
+.header,
+.app-header {
+  cursor: move;
+}
+
+/* Ensure modals are properly centered */
+.lists-modal,
+.edit-task-modal,
+.settings-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content,
+.settings-content {
+  margin: auto;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Make the entire window draggable */
+.pomodoro-window,
+.todo-window {
+  cursor: move;
+}
+
+/* Channel sheet scrollable area */
+.channel-sheet-content {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) transparent;
+}
+
+.channel-sheet-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.channel-sheet-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.channel-sheet-content::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 20px;
+}
+
+/* Task checkbox styling */
+.task-checkbox:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+}
+
+/* Ensure windows are draggable within viewport */
+main {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.react-draggable {
+  position: absolute !important;
+}
